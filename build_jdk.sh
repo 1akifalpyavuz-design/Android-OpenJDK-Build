@@ -28,7 +28,7 @@ AUTOCONF_EXTRA_ARGS+="OBJCOPY=$OBJCOPY \
 
 export BOOT_JDK=$PWD/jdk-24.0.2
 export CFLAGS+=" -DANDROID -D__ANDROID__=1 -Wno-int-conversion -Wno-error=implicit-function-declaration"
-export LDFLAGS+=" -L$PWD/dummy_libs" 
+export LDFLAGS+=" -L$PWD/dummy_libs -Wl,-z,max-page-size=16384 -Wl,-z,common-page-size=16384"
 
 # Create dummy libraries so we won't have to remove them in OpenJDK makefiles
 mkdir -p dummy_libs
