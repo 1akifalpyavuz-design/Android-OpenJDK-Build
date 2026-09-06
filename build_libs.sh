@@ -6,7 +6,7 @@ cd freetype-$BUILD_FREETYPE_VERSION
 echo "Building Freetype"
 
 export PATH=$TOOLCHAIN/bin:$PATH
-./configure \
+LDFLAGS="${LDFLAGS:-} -Wl,-z,max-page-size=16384 -Wl,-z,common-page-size=16384" ./configure \
     --host=$TARGET \
     --prefix=${PWD}/build_android-${TARGET_SHORT} \
     --without-zlib \
